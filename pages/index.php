@@ -16,6 +16,7 @@
     <title><?php echo $title;?></title>
 </head>
 <body>
+    <?php set_include_path(__DIR__.'/') ?>
     <?php include('../components/header.php'); ?>
     <?php include('../components/navbar.php'); ?>
     <div class="root">
