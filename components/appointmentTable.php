@@ -28,7 +28,6 @@
     if($time['hours']>17) $n = 1;
     else $n = 0;
     for ($i = 0; $i < $daySlot; $i++) {
-      $n+=1;
       if($time['wday']+$n>5) $n+=2;
       print '<tr>';
       $newdate=date('D d/m/y', strtotime("+$n days"));
@@ -44,6 +43,7 @@
         }
       }
       print '</tr>';
+      $n+=1;
     }
     print '</table>';
   }
