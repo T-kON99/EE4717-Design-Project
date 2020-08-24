@@ -16,7 +16,6 @@
 }
 
 ul.navbar {
-    float: right;
     list-style: none;
     width: 100%;
     background-color: <?php echo Theme::navbarColor_nonactive;?>;
@@ -45,6 +44,7 @@ ul.navbar {
     text-decoration: none;
     text-align: center;
     color: <?php echo Theme::navbarTextColor_nonactive;?>;
+    transition: <?php echo Theme::navbarTransition;?>;
 }
 
 .navbar li.active a {
@@ -62,5 +62,9 @@ ul.navbar {
 
     .navbar li.nav-item a {
         /* text-align: left; */
+    }
+
+    .sticky {
+        position: relative;
     }
 }
