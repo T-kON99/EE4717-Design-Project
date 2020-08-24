@@ -1,6 +1,6 @@
 <?php namespace Main\Navbar;?>
 <?php set_include_path(__DIR__.'/') ?>
-<?php include('theme.php');?>
+<?php include_once('theme.php');?>
 <div class="navbar-wrapper">
     <ul class="navbar" id="navbar">
         <?php
