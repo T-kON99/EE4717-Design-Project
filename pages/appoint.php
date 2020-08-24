@@ -1,11 +1,13 @@
 <?php namespace Main;
     $currentPage = 'Appointments';
     $title = 'Appointments';
+    $fname = 'appoint';
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../images/favicon.png"/>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/navbar.php">
     <link rel="stylesheet" href="../css/footer.css">
