@@ -1,6 +1,6 @@
 <?php namespace Main;
-    $currentPage = 'Home';
-    $title = 'Home';
+    $currentPage = 'Appointments';
+    $title = 'Appointments';
 ?>
 <html lang="en">
 <head>
