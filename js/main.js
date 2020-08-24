@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navbarWrapper.style.height = navbar.clientHeight;
     });
     navbarWrapper.style.height = navbar.clientHeight;
+    //  Dynamically set the navbar to be sticky.
     let stickyOffset = navbar.offsetTop;
     window.onscroll = () => {
         if (window.pageYOffset >= stickyOffset) {
