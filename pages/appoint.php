@@ -35,11 +35,14 @@ $title = 'Appointments';
         <h1 style="padding: 0px; margin-bottom: 0px;"> Second Shift </h1>
         <h4 style="text-align:center; margin: 0;"> 15.00-19.45 </h4>
         <?php createAppointmentTable('secondShiftTable', $daySlot, $workHour, $startSecondShift);?>
+        <button id="bookingButton">
     </div>
+
     <script type="text/javascript" src="../js/appoint.js"> </script>
     <script>
     setupAppointmentTableListener('firstShiftTable', 3, 5);
     setupAppointmentTableListener('secondShiftTable', 3, 5);
+    setupBookingButtonListener();
     </script>
     <?php include('../components/footer.php'); ?>
 </body>

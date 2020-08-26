@@ -37,7 +37,8 @@ function createAppointmentTable($tableId, int $daySlot, int $numOfHours, int $st
             $hour = $startTime + $j;
             for($k = 0; $k < $numOfAppointmentPerHour; $k++){
                 $minutes = $k*15;
-                print '<td data-hour="'.$hour
+                $dateid = date('Y-m-d ', strtotime("+$n days")) . sprintf("%02d-%02d-00", $hour, $minutes);
+                print '<td id="'. $dateid.'" data-hour="'.$hour
                 .'" data-minutes="'.$minutes.
                 '"></td>';
             }
