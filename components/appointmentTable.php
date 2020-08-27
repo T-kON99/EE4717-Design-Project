@@ -26,7 +26,7 @@ function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
     if($queryAns->num_rows){
         return ' class: cell_otherBooked ';
     }
-    return '';
+    return ' class: cell_freeSlot ';
 }
 function createAppointmentTable($tableId, int $daySlot, int $numOfHours, int $startTime){
 

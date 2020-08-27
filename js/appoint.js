@@ -20,6 +20,7 @@ function setupAppointmentTableListener(tableId, daySlot, numOfHours){
                     var prevCell = document.getElementById(lastTableId).rows[lastClickedRow].cells[lastClickedColumn];
                     if(prevCell.classList.contains('cell_clickedFreeSlot')){
                         prevCell.classList.remove('cell_clickedFreeSlot');
+                        prevCell.classList.add('cell_freeSlot');
                     }else if(prevCell.classList.contains('cell_clickedBookedSlot')){
                         prevCell.classList.remove('cell_clickedBookedSlot');
                         prevCell.classList.add('cell_bookedSlot');
@@ -39,7 +40,8 @@ function setupAppointmentTableListener(tableId, daySlot, numOfHours){
                 if(event.target.classList.contains('cell_bookedSlot')){
                     event.target.classList.remove('cell_bookedSlot');
                     event.target.classList.add('cell_clickedBookedSlot');
-                }else{
+                }else if(event.target.classList.contains('cell_freeSlot')){
+                    event.target.classList.remove('cell_freeSlot');
                     event.target.classList.add('cell_clickedFreeSlot');
                 }
             });
