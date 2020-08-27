@@ -10,16 +10,7 @@ function connectDatabase(){
     if (!$conn) {
         echo 'Connection failed: ' . $conn->connect_error;
     }else{
-        echo "Connected successfully";
         return $conn;
-    }
-}
-
-function queryDatabase($conn, $sqlQuery){
-    if ($conn->query($sqlQuery) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sqlQuery . "<br>" . $conn->error;
     }
 }
 ?>

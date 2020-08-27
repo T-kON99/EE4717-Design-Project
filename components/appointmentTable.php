@@ -5,12 +5,11 @@ function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
     $currentTime = time();
 
     //This one for if doctor disable WIP
-    //if
+
     $queryBooked = "SELECT doctor, username, time FROM appointmentTable
         WHERE doctor = '$doctor' AND username = '$username'
         AND time = '$slotTimeString'";
     $queryAns = mysqli_query($conn, $queryBooked);
-    echo $queryAns->num_rows;
     if($queryAns->num_rows){
         return ' class: cell_bookedSlot ';
     }
