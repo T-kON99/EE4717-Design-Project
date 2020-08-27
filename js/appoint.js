@@ -3,7 +3,7 @@ var lastClickedColumn = 0;
 var lastTableId = "dummyId";
 var lastChoosedHour = 0;
 var lastChoosedMinutes = 0;
-var lastChoosedDatetime = 0;
+var lastChoosedSlotTimeString = 0;
 var userHaveClickedOnce = false;
 function setupAppointmentTableListener(tableId, daySlot, numOfHours){
     var numOfAppointmentPerHour = 4;
@@ -17,22 +17,31 @@ function setupAppointmentTableListener(tableId, daySlot, numOfHours){
                 }
 
                 if(userHaveClickedOnce){
-                    var smt = document.getElementById(lastTableId).rows[lastClickedRow].cells[lastClickedColumn];
-                    smt.classList.remove('cell_choosed');
+                    var prevCell = document.getElementById(lastTableId).rows[lastClickedRow].cells[lastClickedColumn];
+                    if(prevCell.classList.contains('cell_clickedFreeSlot')){
+                        prevCell.classList.remove('cell_clickedFreeSlot');
+                    }else if(prevCell.classList.contains('cell_clickedBookedSlot')){
+                        prevCell.classList.remove('cell_clickedBookedSlot');
+                        prevCell.classList.add('cell_bookedSlot');
+                    }
                 }
 
                 lastClickedColumn = event.target.cellIndex;
                 lastClickedRow = event.target.parentElement.rowIndex;
                 lastTableId = event.target.parentElement.parentElement.parentElement.id;
-                lastChoosedDatetime = event.target.id;
+                lastChoosedSlotTimeString = event.target.id;
                 console.log("hour: "+lastChoosedHour);
                 console.log("minutes: "+lastChoosedMinutes);
                 userHaveClickedOnce = true;
 
                 console.log("column:"+lastClickedColumn);
                 console.log("row:"+lastClickedRow);
-
-                event.target.classList.add('cell_choosed');
+                if(event.target.classList.contains('cell_bookedSlot')){
+                    event.target.classList.remove('cell_bookedSlot');
+                    event.target.classList.add('cell_clickedBookedSlot');
+                }else{
+                    event.target.classList.add('cell_clickedFreeSlot');
+                }
             });
         }
     }
@@ -61,8 +70,19 @@ function post(path, params, method='post') {
 function setupBookingButtonListener(){
     document.getElementById("bookingButton").addEventListener("click", function(event){
         if(userHaveClickedOnce){
-            var params = {username: 'Jonisins', doctor: 'Edo', dateTime: lastChoosedDatetime};
+            var params = {username: 'Jonisins', doctor: 'Edo', slotTimeString: lastChoosedSlotTimeString};
             post('../serverLogic/postRetriever.php', params);
+        }
+    });
+}
+function setupReloadListener(){
+    window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted ||
+                             ( typeof window.performance != "undefined" &&
+                                  window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+        // Handle page restore.
+            window.location.reload();
         }
     });
 }

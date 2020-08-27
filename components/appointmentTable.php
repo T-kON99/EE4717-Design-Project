@@ -1,5 +1,38 @@
 <?php
+include '../serverLogic/sqlHandler.php';
+function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
+    $class = '';
+    $currentTime = time();
+
+    //This one for if doctor disable WIP
+    //if
+    $queryBooked = "SELECT doctor, username, time FROM appointmentTable
+        WHERE doctor = '$doctor' AND username = '$username'
+        AND time = '$slotTimeString'";
+    $queryAns = mysqli_query($conn, $queryBooked);
+    echo $queryAns->num_rows;
+    if($queryAns->num_rows){
+        return ' class: cell_bookedSlot ';
+    }
+
+    $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $slotTimeString);
+    $slotTime = $datetime->getTimestamp();
+
+    if($slotTime-$currentTime < 60*60*3){
+        return ' class: cell_disabled ';
+    }
+    $queryBooked = "SELECT doctor, time FROM appointmentTable
+        WHERE doctor = '$doctor' AND time = '$slotTimeString'";
+    $queryAns = mysqli_query($conn, $queryBooked);
+    if($queryAns->num_rows){
+        return ' class: cell_otherBooked ';
+    }
+    return '';
+}
 function createAppointmentTable($tableId, int $daySlot, int $numOfHours, int $startTime){
+
+
+    $conn = connectDatabase();
 
     $numOfAppointmentPerHour = 4;
     $time = getdate();
@@ -20,7 +53,6 @@ function createAppointmentTable($tableId, int $daySlot, int $numOfHours, int $st
         }
     }
     print '</tr>';
-
     /**
     * The idea is that we only have three days slot including current date onwards
     * Saturday and Sunday are skipped
@@ -37,9 +69,10 @@ function createAppointmentTable($tableId, int $daySlot, int $numOfHours, int $st
             $hour = $startTime + $j;
             for($k = 0; $k < $numOfAppointmentPerHour; $k++){
                 $minutes = $k*15;
-                $dateid = date('Y-m-d ', strtotime("+$n days")) . sprintf("%02d-%02d-00", $hour, $minutes);
-                print '<td id="'. $dateid.'" data-hour="'.$hour
-                .'" data-minutes="'.$minutes.
+                $dateid = date('Y-m-d ', strtotime("+$n days")) . sprintf("%02d:%02d:00", $hour, $minutes);
+                $class = getSlotPropertiesFromSql($conn, 'Edo', 'Jonisins', $dateid);
+                print '<td id="'. $dateid.'" class="'.$class.'" data-hour="'.$hour.
+                '" data-minutes="'.$minutes.
                 '"></td>';
             }
         }

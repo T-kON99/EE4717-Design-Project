@@ -17,9 +17,9 @@ function connectDatabase(){
 
 function queryDatabase($conn, $sqlQuery){
     if ($conn->query($sqlQuery) === TRUE) {
-      echo "New record created successfully";
+        echo "New record created successfully";
     } else {
-      echo "Error: " . $sqlQuery . "<br>" . $conn->error;
+        echo "Error: " . $sqlQuery . "<br>" . $conn->error;
     }
 }
 ?>

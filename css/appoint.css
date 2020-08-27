@@ -16,5 +16,9 @@
 }
 
 .cell_disabled       { background-color:grey !important }
-.cell_booked       { background-color:red !important }
-.cell_choosed        { background-color:green !important }
+.cell_otherBooked       { background-color:red !important }
+.cell_freeSlot        { background-color:#b8d1f3 !important }
+.cell_freeSlot:hover { background-color:#ffff99 !important }
+.cell_clickedFreeSlot { background-color:green !important }
+.cell_bookedSlot { background-color:purple !important }
+.cell_clickedBookedSlot { background-color:black !important }

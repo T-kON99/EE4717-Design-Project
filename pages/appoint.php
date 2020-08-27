@@ -43,6 +43,7 @@ $title = 'Appointments';
     setupAppointmentTableListener('firstShiftTable', 3, 5);
     setupAppointmentTableListener('secondShiftTable', 3, 5);
     setupBookingButtonListener();
+    setupReloadListener();
     </script>
     <?php include('../components/footer.php'); ?>
 </body>
