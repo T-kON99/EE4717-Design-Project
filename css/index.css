@@ -1,24 +1,30 @@
 section.card-container {
-    margin: 10px;
+    padding: 5px 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .card-row {
+    flex: 1;
+    max-width: 30%;
     display: flex;
-    margin: 5px;
-    width: 30%;
-    height: 20vh;
-    border-radius: 12px;
+    flex-direction: row;
+    border-radius: 7px;
     background-color: sandybrown;
-    padding: 5px;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.card-row:hover {
+    box-shadow: 0 0 0 2px #346bae inset;
+    transition: 0.3s;
 }
 
 .card-col {
-    flex: 1;
+
 }
 
 .card-col.icon {
@@ -55,6 +61,21 @@ hr.card-separator {
     justify-items: center;
     justify-content: center;
     align-items: center;
+}
+
+
+@media (max-width: 750px) {
+    section.card-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .card-row {
+        max-width: 100%;
+        max-height: 20%;
+    }
 }
 
 /* Card Colors */
