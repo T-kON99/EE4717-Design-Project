@@ -76,6 +76,11 @@ h1.header img {
     text-decoration: none;
 }
 
+.action a {
+    text-decoration: none;
+    padding: .25em;
+}
+
 .button-primary {
     border-radius: 5px;
     color: #ffffff;
