@@ -15,7 +15,7 @@
         <section class="card-container">
             <div class="card-row card-1">
                 <div class="card-col icon">
-                    <div class="card-icon"><img src="../images/card-1.png" alt="card-1"></div>
+                    <div class="card-icon"><img src="../images/service-1-34x44.png" alt="service-1"></div>
                 </div>
                 <div class="card-col description">
                     <div class="card-title">Qualified Doctors</div>
@@ -27,7 +27,7 @@
             </div>
             <div class="card-row card-2">
                 <div class="card-col icon">
-                    <div class="card-icon"><img src="../images/card-1.png" alt="card-1"></div>
+                    <div class="card-icon"><img src="../images/service-3-35x44.png" alt="service-3"></div>
                 </div>
                 <div class="card-col description">
                     <div class="card-title">24/7 Coverage</div>
@@ -39,7 +39,7 @@
             </div>
             <div class="card-row card-3">
                 <div class="card-col icon">
-                    <div class="card-icon"><img src="../images/card-1.png" alt="card-1"></div>
+                    <div class="card-icon"><img src="../images/service-2-48x34.png" alt="service-2"></div>
                 </div>
                 <div class="card-col description">
                     <div class="card-title">Emergency Ready</div>
