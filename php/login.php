@@ -12,7 +12,7 @@
     $password = $password_err = '';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $db_conn = connectDB();
+        $db_conn = connect_db();
 
         if(!isset($_POST['email']) || !isset($_POST['password'])) {
             $email_err = $password_err = 'Invalid Request';
@@ -31,7 +31,7 @@
         }
 
         if(empty($email_err) && empty($password_err)) {
-            $sql_query = 'SELECT id, email, password from users WHERE email = ?';
+            $sql_query = 'SELECT id, email, type, password from users WHERE email = ?';
             if($stmt = mysqli_prepare($db_conn, $sql_query)) {
                 mysqli_stmt_bind_param($stmt, "s", $param_email);
                 $param_email = $email;
@@ -40,7 +40,7 @@
                 if(mysqli_stmt_execute($stmt)) {
                     mysqli_stmt_store_result($stmt);
                     if(mysqli_stmt_num_rows($stmt) === 1) {
-                        mysqli_stmt_bind_result($stmt, $db_id, $db_email, $hashed_password, $time_created, $acc_type);
+                        mysqli_stmt_bind_result($stmt, $db_id, $db_email, $acc_type, $hashed_password);
                         if(mysqli_stmt_fetch($stmt)) {
                             if(password_verify($password, $hashed_password)) {
                                 $_SESSION["loggedin"] = true;
@@ -50,7 +50,6 @@
                                 header("location: ../pages/index.php");
                             }
                             else {
-                                echo 'here';
                                 $password_err = "Invalid email/password";
                             }
                         }
@@ -78,7 +77,6 @@
     <div class="center">
         <div class="wrapper">
             <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                     <label>Email</label>
