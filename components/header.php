@@ -1,6 +1,7 @@
 <?php set_include_path(__DIR__.'/'); ?>
 <?php 
     include_once('theme.php');
+    ini_set('session.cookie_httponly', '1');
     session_start();
     use \Main\ThemeData as Theme;
 ?>
