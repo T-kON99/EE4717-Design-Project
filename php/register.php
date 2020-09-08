@@ -14,7 +14,7 @@
     $success_msg = '';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $db_conn = connectDB();
+        $db_conn = connect_db();
 
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['con_password'])) {
             $email_err = $password_err = $con_password_err = 'Invalid Request';
@@ -26,8 +26,8 @@
             $email = trim($_POST['email']);
         }
 
-        if(empty(trim($_POST['password']))) {
-            $password_err = 'Please enter password';
+        if(empty(trim($_POST['password'])) || strlen($_POST['password']) < 6) {
+            $password_err = 'Please enter password of at least 6 characters long';
         } else {
             $password = trim($_POST['password']);
         }
@@ -79,7 +79,6 @@
                 <span class="status success"><?php echo $success_msg; ?> You'll be redirected to login page soon or click <a href="login.php">here</a></span>
             <?php } ?>
             <h2>Signup</h2>
-            <p>Please register in your credentials to sign up.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                     <label>Email</label>
