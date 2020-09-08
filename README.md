@@ -9,3 +9,9 @@ This is a project for EE4717 Web Application Design
 - Patient registration is needed. When booking an appointment with the doctor, the doctor’s schedule must be shown and the booking is allowed when the doctor is free and available. 
 - Once an appointment is made, an email notification will be sent to the patient. 
 - Both doctor and patient can also reschedule the appointment. 
+
+##  Testing
+
+```bash
+php tests/test_all.php
+```
