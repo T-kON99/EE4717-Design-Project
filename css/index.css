@@ -12,15 +12,17 @@ section.card-container {
     max-width: 30%;
     display: flex;
     flex-direction: row;
-    border-radius: 7px;
-    background-color: sandybrown;
-    padding: 20px;
+    flex-wrap: wrap;
     transition: 0.3s;
+    border-radius: 10px;
+    padding: 50px 0;
+    color: #ffffff;
+    overflow: hidden;
 }
 
 .card-row:hover {
-    box-shadow: 0 0 0 2px #346bae inset;
-    transition: 0.3s;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.25s;
 }
 
 .card-col {
@@ -35,6 +37,10 @@ section.card-container {
     justify-content: center;
 }
 
+.card-col.icon:hover {
+    
+}
+
 .card-col.description {
     flex: 70%;
     text-align: left;
@@ -44,9 +50,15 @@ section.card-container {
 }
 
 hr.card-separator {
-    width: 100%;
+    width: 50%;
     text-align: left;
+    margin-left: 0;
     display: block;
+    transition: 0.25s;
+}
+
+.card-row:hover  hr.card-separator {
+    width: 80%;
 }
 
 .card-title {
