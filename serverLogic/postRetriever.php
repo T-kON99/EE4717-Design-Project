@@ -1,5 +1,5 @@
 <?php
-    include 'sqlHandler.php';
+    include_once 'sqlHandler.php'
 
     $doctorSql = $_POST['doctor'];
     $usernameSql = $_POST['username'];

@@ -18,3 +18,44 @@
 .cell_clickedFreeSlot { background-color:green !important }
 .cell_bookedSlot { background-color:yellow !important }
 .cell_clickedBookedSlot { background-color:orange !important }
+
+
+
+.rowChoice        { background-color:#b8d1f3 !important }
+.rowChoice:hover { background-color:#ffff99 !important }
+.rowClicked { background-color:green !important }
+.rowChoosed { background-color:orange !important }
+#doctorChooseTable  { margin-top:  20px; display: inline-block; overflow: auto;}
+.doctorChooseHeaderDiv { margin-top: -20px; position: absolute;}
+.doctorTr:nth-child(even) { background: #EEE; } */
+#doctorChooseTable { border-collapse: collapse; }
+
+
+input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display:inline-block;
+    *display: inline;     /* for IE7*/
+    zoom:1;              /* for IE7*/
+    vertical-align:middle;
+    margin-left:20px
+}
+select {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display:inline-block;
+    *display: inline;     /* for IE7*/
+    zoom:1;              /* for IE7*/
+    vertical-align:middle;
+    margin-left:20px
+}
+
+label {
+    display:inline-block;
+    *display: inline;     /* for IE7*/
+    zoom:1;              /* for IE7*/
+    float: left;
+    padding-top: 5px;
+    text-align: right;
+    width: 140px;
+}

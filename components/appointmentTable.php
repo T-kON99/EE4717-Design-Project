@@ -1,5 +1,5 @@
 <?php
-include '../serverLogic/sqlHandler.php';
+include_once '../serverLogic/sqlHandler.php';
 function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
     $class = '';
     $currentTime = time();
@@ -28,8 +28,9 @@ function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
     }
     return ' class: cell_freeSlot ';
 }
-function createAppointmentTable($tableId, int $daySlot, int $numOfHours, int $startTime){
 
+function createAppointmentTable($tableId, $daySlot, $numOfHours, $startTime){
+// add doctor, add date
 
     $conn = connectDatabase();
 

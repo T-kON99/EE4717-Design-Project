@@ -19,7 +19,9 @@ $title = 'Appointments';
     <?php include('../components/header.php'); ?>
     <?php include('../components/navbar.php'); ?>
     <div class="root">
-        <br></br>
+        <?php include('../components/doctorFilter.php'); ?>
+        <br>
+        <h3> Step 3 Choose Appointment </h3>
         <h1 style="padding: 0px; margin-bottom: 0px;"> First Shift </h1>
         <h4 style="text-align:center; margin: 0;"> 9.00-13.45 </h4>
         <?php
@@ -45,10 +47,10 @@ $title = 'Appointments';
 
     <script type="text/javascript" src="../js/appoint.js"> </script>
     <script>
-    setupAppointmentTableListener('firstShiftTable', 3, 5);
-    setupAppointmentTableListener('secondShiftTable', 3, 5);
-    setupBookingButtonListener();
-    setupReloadListener();
+        setupAppointmentTableListener('firstShiftTable', 3, 5);
+        setupAppointmentTableListener('secondShiftTable', 3, 5);
+        setupBookingButtonListener();
+        setupReloadListener();
     </script>
     <?php include('../components/footer.php'); ?>
 </body>
