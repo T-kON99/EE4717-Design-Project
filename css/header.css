@@ -78,7 +78,27 @@ h1.header img {
 
 .action a {
     text-decoration: none;
-    padding: .25em;
+    padding: .25em 0;
+    position: relative;
+    color: #007bff;
+}
+
+.action a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: .1rem;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #007bff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.action a:hover:after {
+    width: 100%;
+    left: 0;
 }
 
 .button-primary {
