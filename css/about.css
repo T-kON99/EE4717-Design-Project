@@ -1,0 +1,56 @@
+/* Overloads default */
+div.root {
+    padding: 0;
+}
+
+/* Page specifics */
+.content {
+    padding: 5px 10px;
+}
+
+.banner {
+    background-image: url("../images/bg-img-3.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: 4rem 0;
+}
+
+.main-banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.banner-item {
+    display: flex;
+    align-items: center;
+}
+
+.box-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-counter {
+    display: flex;
+    align-items: center;
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 3rem;
+    color: #00bcd1;
+    font-weight: 600;
+    letter-spacing: -.04em;
+}
+
+.box-title {
+    display: flex;
+    align-items: center;
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #346bae;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 0 1rem;
+}
