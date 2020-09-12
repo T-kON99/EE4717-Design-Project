@@ -1,41 +1,65 @@
 <?php namespace Main;
     $currentPage = 'Home';
     $title = 'Home';
+    $fname = 'index';
 ?>
+<?php set_include_path(__DIR__.'/') ?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.php">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/<?php echo basename(__FILE__, '.php') . '.css'; ?>">
-    <script src="../js/main.js"></script>
-    <script src="../js/<?php echo basename(__FILE__, '.php') . '.js'; ?>"></script>
-    <title><?php echo $title;?></title>
+    <?php include('../components/head.php'); ?>
 </head>
 <body>
-    <?php set_include_path(__DIR__.'/') ?>
     <?php include('../components/header.php'); ?>
     <?php include('../components/navbar.php'); ?>
     <div class="root">
-        This is the <?php echo $currentPage;?> page. Fill this with something....
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        test
+        <section class="card-container">
+            <div class="card-row card-1">
+                <div class="card-col icon">
+                    <div class="card-icon"><img src="../images/service-1-34x44.png" alt="service-1"></div>
+                </div>
+                <div class="card-col description">
+                    <div class="card-title">Qualified Doctors</div>
+                    <hr class="card-separator">
+                    <div class="card-subtitle">
+                        Doctors of AlwaysCare Clinic has guaranteed experienced skills to handle your daily health problems
+                    </div>
+                </div>
+            </div>
+            <div class="card-row card-2">
+                <div class="card-col icon">
+                    <div class="card-icon"><img src="../images/service-3-35x44.png" alt="service-3"></div>
+                </div>
+                <div class="card-col description">
+                    <div class="card-title">24/7 Coverage</div>
+                    <hr class="card-separator">
+                    <div class="card-subtitle">
+                        Facilities and personnels ready to handle emergency cases whenever it is
+                    </div>
+                </div>
+            </div>
+            <div class="card-row card-3">
+                <div class="card-col icon">
+                    <div class="card-icon"><img src="../images/service-2-48x34.png" alt="service-2"></div>
+                </div>
+                <div class="card-col description">
+                    <div class="card-title">Emergency Ready</div>
+                    <hr class="card-separator">
+                    <div class="card-subtitle">
+                        Life threatening situations are always our top priority, and is always prioritized
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+
     <?php include('../components/footer.php'); ?>
 </body>
 </html>

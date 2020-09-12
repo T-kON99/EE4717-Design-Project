@@ -1,22 +1,14 @@
 <?php namespace Main;
     $currentPage = 'Contacts';
     $title = 'Contacts';
+    $fname = 'contact';
 ?>
+<?php set_include_path(__DIR__.'/') ?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.php">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/<?php echo basename(__FILE__, '.php') . '.css'; ?>">
-    <script src="../js/main.js"></script>
-    <script src="../js/<?php echo basename(__FILE__, '.php') . '.js'?>"></script>
-    <title><?php echo $title;?></title>
+    <?php include('../components/head.php'); ?>
 </head>
 <body>
-    <?php set_include_path(__DIR__.'/') ?>
     <?php include('../components/header.php'); ?>
     <?php include('../components/navbar.php'); ?>
     <div class="root">

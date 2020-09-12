@@ -12,7 +12,10 @@
         const navbarTextColor_hover = "rgb(10, 173, 203)";
         const navbarTextColor_click = "white";
         const navbarTextColor_active = "rgb(10, 173, 203)";
+        const navbarTransition = "0.3s";
 
+        const brandName = "AlwaysCare";
+        
         public static $urls = array(
             'Home' => 'index.php',
             'About Us' => 'about.php',
