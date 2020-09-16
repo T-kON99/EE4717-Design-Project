@@ -12,21 +12,12 @@
     <?php include('../components/header.php'); ?>
     <?php include('../components/navbar.php'); ?>
     <div class="root">
-        This is the <?php echo $currentPage;?> page. Fill this with something....
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        test
+        <section class="card-container" id="category-cards-container">
+            <?php include('../components/categoryCards.php'); ?>
+        </section>
+        <section class="cross-card-container" id="doctors-cards-container">
+            <?php include('../components/doctorCards.php'); ?>
+        </section>
     </div>
     <?php include('../components/footer.php'); ?>
 </body>
