@@ -1,0 +1,217 @@
+section.card-container {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+/* Categories Cards */
+.card-row-sm {
+    /* flex: 1; */
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    transition: 0.3s;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 50px 0;
+    color: #ffffff;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.card-row-sm:hover {
+    /* box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5); */
+    border: 1px solid #00bcd1;
+    transition: 0.25s;
+}
+
+.card-row-active {
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
+    /* border: 1px solid #00bcd1; */
+    transition: 0.25s; 
+}
+
+.card-col-sm {
+
+}
+
+.card-col-sm.icon-sm {
+    flex: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-col-sm.icon-sm:hover {
+    
+}
+
+.card-col-sm.description {
+    flex: 70%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+hr.card-separator-sm {
+    width: 50%;
+    text-align: left;
+    margin-left: 0;
+    display: block;
+    transition: 0.25s;
+}
+
+.card-row-sm:hover  hr.card-separator-sm {
+    width: 80%;
+}
+
+
+.card-title-sm {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.4em;
+}
+
+.card-subtitle-sm {
+    display: flex;
+    vertical-align: middle;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+}
+
+/* Responsitivity */
+
+@media (max-width: 750px) {
+    section.card-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .card-row-sm {
+        width: 80%;
+        max-width: 100%;
+        max-height: 20%;
+        padding: 1em;
+    }
+
+    section.cross-card-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .card-row-xl {
+        width: 90%;
+        max-width: 100%;
+        max-height: 20%;
+        padding: 1em;
+    }
+}
+
+.card-0 {
+    color: black;
+}
+
+/* Doctors Cards */
+
+section.cross-card-container {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.card-row-xl {
+    /* flex: 1; */
+    width: 90%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 50px 0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 30px;
+    opacity: 1;
+    transition: opacity 200ms linear, height 200ms step-start, margin 200ms linear, padding 200ms linear, border 200ms linear;
+}
+
+.card-row-xl:hover {
+    /* box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5); */
+    border: 1px solid #00bcd1;
+    transition: 0.25s;
+}
+
+.card-col-xl.icon-xl {
+    flex: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-col-xl.icon-xl:hover {
+    
+}
+
+.card-col-xl.description {
+    flex: 70%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+hr.card-separator-xl {
+    width: 50%;
+    text-align: left;
+    margin-left: 0;
+    display: block;
+    transition: 0.25s;
+}
+
+.card-row-xl:hover  hr.card-separator-xl {
+    width: 80%;
+}
+
+.card-title-xl {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.4em;
+}
+
+.card-subtitle-xl {
+    display: flex;
+    vertical-align: middle;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+}
+
+.card-doctor {
+    color: black;
+}
+
+.hidden {
+    border: 0;
+    border-radius: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: linear, step-end, step-start;
+}
