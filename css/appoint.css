@@ -21,14 +21,22 @@
 
 
 
-.rowChoice        { background-color:#b8d1f3 !important }
-.rowChoice:hover { background-color:#ffff99 !important }
+.rowChoice        { background-color:#b8d1f3 }
+.rowChoice:hover { background-color:#ffff99 }
 .rowClicked { background-color:green !important }
-.rowChoosed { background-color:orange !important }
-#doctorChooseTable  { margin-top:  20px; display: inline-block; overflow: auto;}
-.doctorChooseHeaderDiv { margin-top: -20px; position: absolute;}
-.doctorTr:nth-child(even) { background: #EEE; } */
-#doctorChooseTable { border-collapse: collapse; }
+.rowChoosed { background-color:#007bff !important }
+#doctorChooseTable  {
+    margin-top:  20px;
+    /* overflow: auto; */
+    /* border: 1px solid #000000; */
+    border: 1px solid #dee2e6;
+}
+/* .doctorChooseHeaderDiv { margin-top: -20px; position: absolute;} */
+.doctorChooseHeader { background-color:#007bff !important }
+#doctorTr{
+    background-color:#b8d1f3 !important
+}
+
 
 
 input {
@@ -58,4 +66,81 @@ label {
     padding-top: 5px;
     text-align: right;
     width: 140px;
+}
+
+fieldset
+{
+    border: 1px solid #ddd !important;
+    margin: 0;
+    xmin-width: 0;
+    padding: 10px;
+    position: relative;
+    border-radius:4px;
+    background-color:#f5f5f5;
+    padding-left:10px!important;
+}
+
+    legend
+    {
+        font-size:14px;
+        font-weight:bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+    }
+
+#inputDate{
+    display: block;
+    width: 60%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position: sticky; left: 0;
+}
+
+#specializationList{
+    display: block;
+    width: 60%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.custom-button {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

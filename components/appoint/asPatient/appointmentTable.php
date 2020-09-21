@@ -1,6 +1,11 @@
 <?php
-include_once '../serverLogic/sqlHandler.php';
+include_once dirname(__FILE__) . '/../../../serverLogic/sqlHandler.php';
 function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
+    /** There are several condition for disabled cells,
+     * 1st if the doctor disabled /**
+     * 2nd time slot is within 3 hours or less of current time
+     * 3rd if it is in the past
+     */
     $class = '';
     $currentTime = time();
 
@@ -29,19 +34,29 @@ function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
     return ' class: cell_freeSlot ';
 }
 
+function increaseDateByDays($format, $date, $numOfDays){
+
+    return date( $format, strtotime( "2009-01-31 +1 month" ) ); // PHP:  2009-03-03
+}
 function createAppointmentTable($tableId, $daySlot, $numOfHours, $startTime){
 // add doctor, add date
 
     $conn = connectDatabase();
 
+
     $numOfAppointmentPerHour = 4;
-    $time = getdate();
-    $date =date('Y-m-d');
-
-    $day = $time['wday'];
-    if($day < 3){
-
+    if(isset($_SESSION['dateChoose'])){
+        $time = DateTime::createFromFormat('Y-m-d', $_SESSION['dateChoose']);
+        // echo $_SESSION['dateChoose'];
+    }else{
+        $time = new DateTime();
     }
+    // $time = DateTime::createFromFormat('Y-m-d', $startDate);;
+
+    $day = date( "w", $time->getTimestamp());
+    // if($day < 3){
+    //
+    // }
     print '<table class="hoverTable" id="'.$tableId.'">';
     print '<tr>';
     print '<th></th>';
@@ -54,22 +69,24 @@ function createAppointmentTable($tableId, $daySlot, $numOfHours, $startTime){
     }
     print '</tr>';
     /**
-    * The idea is that we only have three days slot including current date onwards
+    * The idea is that we only have three days slot by start date, and onwards 2 days
     * Saturday and Sunday are skipped
-    * And if the days is already late 17.00>, the first date to be bookable is tomorrow instead of today
+    * Bookeable date is today onwards, no exception
+    * That means past date will be cleared in the sql database
     */
-    if($time['hours']>17) $n = 1;
-    else $n = 0;
+    $n = 0;
     for ($i = 0; $i < $daySlot; $i++) {
-        if($time['wday']+$n>5) $n+=2;
+        if(($day+$n)%7==0) $n+=1;//Sunday Case
+        if(($day+$n)%7==6) $n+=2;//Sunday Case
         print '<tr>';
-        $newdate=date('D d/m/y', strtotime("+$n days"));
+        //newdate needs to change
+        $newdate=date('D d/m/y', strtotime("+$n days", $time->getTimestamp()));
         print '<td>'.$newdate.'</td>';
         for($j = 0; $j < $numOfHours; $j++){
             $hour = $startTime + $j;
             for($k = 0; $k < $numOfAppointmentPerHour; $k++){
                 $minutes = $k*15;
-                $dateid = date('Y-m-d ', strtotime("+$n days")) . sprintf("%02d:%02d:00", $hour, $minutes);
+                $dateid = date('Y-m-d ', strtotime("+$n days", $time->getTimestamp())) . sprintf("%02d:%02d:00", $hour, $minutes);
                 $class = getSlotPropertiesFromSql($conn, 'Edo', 'Jonisins', $dateid);
                 print '<td id="'. $dateid.'" class="'.$class.'" data-hour="'.$hour.
                 '" data-minutes="'.$minutes.

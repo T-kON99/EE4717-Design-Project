@@ -1,4 +1,4 @@
-<table id="doctorChooseTable" style="height:150px; width:100%;">
+<table id="doctorChooseTable" style="height:150px; width:90%; margin-left:20px; text-align:center;">
     <tr>
         <th class="doctorChooseHeader" style="width:30px;"> <div class="doctorChooseHeaderDiv"> # </div></th>
         <th id="doctorSort" class="doctorChooseHeader" style="width:100px;"> <div class="doctorChooseHeaderDiv">Doctor </div></th>
@@ -7,50 +7,52 @@
         <th id="ratingSort" class="doctorChooseHeader" style="width:100px;"> <div class="doctorChooseHeaderDiv"> Rating </div></th>
     </tr>
     <?php
-    include_once realpath(dirname(__FILE__) . '/../serverLogic/sqlHandler.php');
-
-    // $dateSql = date('Y-m-d H:i:s');
+    include_once realpath(dirname(__FILE__) . '/../../../serverLogic/sqlHandler.php');
 
     $conn = connectDatabase();
 
-    $queryDoctor = "SELECT specialization FROM doctorTable ";
-    if(isset($_POST['specialization']) && !empty($_POST[''])){
+    $queryDoctor = "SELECT * FROM doctorTable ";
+    if(isset($_SESSION['specialization'])){
         $queryDoctor = $queryDoctor. " WHERE specialization = ?";
     }else{
         $queryDoctor = "SELECT * FROM doctorTable ";
     }
 
-    if (isset($_POST['orderBy']) && !empty($_POST[''])) {
-        if($_POST['orderBy']=="rating")
+    if (isset($_SESSION['orderBy']) && !empty($_SESSION[''])) {
+        if($_SESSION['orderBy']=="rating")
             $queryDoctor = $queryDoctor." ORDER BY rating DESC";
-        else if($_POST['orderBy']=="doctorAsc")
+        else if($_SESSION['orderBy']=="doctorAsc")
             $queryDoctor = $queryDoctor." ORDER BY doctor ASC";
-        else if($_POST['orderBy']=="doctorDesc")
+        else if($_SESSION['orderBy']=="doctorDesc")
             $queryDoctor = $queryDoctor." ORDER BY doctor DESC";
     }
 
     $prepareDoctorTable = $conn->prepare($queryDoctor);
 
-    if(isset($_POST['specialization']) && !empty($_POST[''])){
-        $prepareDoctorTable->bind_param("s", $_POST['specialization']);
+    if(isset($_SESSION['specialization'])){
+        $prepareDoctorTable->bind_param("s", $_SESSION['specialization']);
         $prepareDoctorTable->execute();
     }else{
         $prepareDoctorTable->execute();
     }
 
     $queryAns = $prepareDoctorTable->get_result();
-    // if($queryAns->num_rows);
 
     $prepareDoctorTable->close();
         $rowCounter = 0;
         while($row = mysqli_fetch_assoc($queryAns)) {
-            echo '<tr class="doctorTr">';
+            // echo ($_SESSION['doctorChoose'] == $row["doctor"]) ? ' rowClicked' : '';
+            echo '<tr class="doctorTr';
+            if(isset($_SESSION['doctorChoose'])){
+                echo ($_SESSION['doctorChoose'] == $row["doctor"]) ? ' rowClicked rowChoosed' : '';
+            }
+            echo '">';
                 $rowCounter = $rowCounter+1;
                 echo '<td>' . $rowCounter.' </td>';
-                echo '<td class="clickableDoctor">' . $row["doctor"].' </td>';
-                echo '<td class="clickableDoctor">' . $row["specialization"].' </td>';
-                echo '<td class="clickableDoctor">' . $row["address"].' </td>';
-                echo '<td class="clickableDoctor">' . $row["rating"].' </td>';
+                echo '<td>' . $row["doctor"].' </td>';
+                echo '<td>' . $row["specialization"].' </td>';
+                echo '<td>' . $row["address"].' </td>';
+                echo '<td>' . $row["rating"].' </td>';
             echo '</tr>';
         }
      ?>

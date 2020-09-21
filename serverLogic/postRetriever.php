@@ -1,5 +1,5 @@
 <?php
-    include_once 'sqlHandler.php'
+    include_once 'sqlHandler.php';
 
     $doctorSql = $_POST['doctor'];
     $usernameSql = $_POST['username'];
@@ -29,6 +29,11 @@
 
 
     $prepareBooked->execute();
+    //TODO check condition, 1. time is on the slot, 2. No Saturday and Sunday
+    $checkCondition = false;
+    if($checkCondition){
+        echo 'reason why doesnt pass the test';
+    }
     $queryAns = $prepareBooked->get_result();
     if($queryAns->num_rows){
         $prepareDelete->execute();
