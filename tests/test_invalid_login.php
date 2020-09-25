@@ -2,7 +2,7 @@
     //  Includes and setups
     define('__ROOT__', dirname(dirname(__FILE__)));
     require_once(__ROOT__.'/php/config.php');
-    require_once(__ROOT__.'/tests/unittest.php');
+    require_once(__ROOT__.'/classes/unittest.php');
 
     //  Extend UnitTest class and fill relevant methods
     class Test extends UnitTest {
