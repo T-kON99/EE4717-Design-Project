@@ -8,7 +8,7 @@ $startSecondShift = 15;
 date_default_timezone_set('Asia/Singapore');
 ?>
 <div style="display:block; text-align:center">
-    <fieldset style="width:1200px; display:inline-block;">
+    <fieldset style="width:1500px; display:inline-block;">
         <legend>Manage Appointments & Time Slots
             <?php
             echo '<br>';
@@ -38,7 +38,7 @@ date_default_timezone_set('Asia/Singapore');
 
 <div style="display:block; text-align:center">
     <h4 style="text-align:center; margin: 0;"> 15.00 - 19.45 </h4>
-    <fieldset style="width:1200px; display:inline-block;">
+    <fieldset style="width:1500px; display:inline-block;">
         <legend>Manage Appointments & Time Slots</legend>
         <?php createAppointmentTable('asDoctorDailyTableTwo', $daySlot, $workHour, $startSecondShift);?>
         <ul class="legend">

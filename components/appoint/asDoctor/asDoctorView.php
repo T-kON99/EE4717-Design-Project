@@ -1,6 +1,7 @@
 <?php include('sessionSaving.php'); ?>
+
 <fieldset>
-    <legend>Schedule Management</legend>
+    <legend><h1> Schedule Management</h1></legend>
 
     <?php
     include('weeklyTableLayout.php');
@@ -11,7 +12,7 @@
 <br>
 <br>
 <fieldset>
-    <legend>Appointment Management</legend>
+    <legend><h1>Appointment Management</h1></legend>
     <?php
     include('dateFilter.php');
     include('dailyTableLayout.php');

@@ -9,7 +9,7 @@ $startSecondShift = 15;
 date_default_timezone_set('Asia/Singapore');
 ?>
 <div style="display:block; text-align:center" onselectstart="return false">
-    <fieldset style="width:1200px; display:inline-block;">
+    <fieldset style="width:1500px; display:inline-block;">
         <legend>Manage Weekly Schedule
             <?php
             echo '<br>';
@@ -38,7 +38,7 @@ date_default_timezone_set('Asia/Singapore');
 
 <div style="display:block; text-align:center" onselectstart="return false">
     <h4 style="text-align:center; margin: 0;"> 15.00 - 19.45 </h4>
-    <fieldset style="width:1200px; display:inline-block;">
+    <fieldset style="width:1500px; display:inline-block;">
         <legend>Manage Weekly Schedule</legend>
         <?php createWeeklyTable('asDoctorWeeklyTableTwo', $workHour, $startSecondShift);?>
         <ul class="legend">
