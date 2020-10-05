@@ -1,1 +1,2 @@
-doctors_id,users_id,day
+doctors_id,weekday,daytime
+1,3,09:15:00

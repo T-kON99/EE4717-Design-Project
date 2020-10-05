@@ -1,48 +1,41 @@
 <?php
 include_once dirname(__FILE__) . '/../../../serverLogic/sqlHandler.php';
-function getSlotPropertiesFromSql($conn, $doctor, $username, $slotTimeString){
+include_once realpath(dirname(__FILE__) . '/../../../php/config.php');
+
+function getSlotPropertiesFromSql($conn, $doctorId, $userId, $slotTimeString){
     /** There are several condition for disabled cells,
      * 1st if the doctor disabled /**
      * 2nd time slot is within 3 hours or less of current time
      * 3rd if it is in the past
      */
-    $class = '';
+
     $currentTime = time();
 
-    //This one for if doctor disable WIP
-
-    $queryBooked = "SELECT doctor, username, time FROM appointmentTable
-        WHERE doctor = '$doctor' AND username = '$username'
-        AND time = '$slotTimeString'";
-    $queryAns = mysqli_query($conn, $queryBooked);
-    if($queryAns->num_rows){
-        return ' class: cell_bookedSlot ';
-    }
+    if(!is_null($userId) && !is_null($doctorId))
+        if(checkDoctorBookedByUser($conn, $doctorId, $userId, $slotTimeString))
+            return 'cell_bookedSlot';
 
     $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $slotTimeString);
     $slotTime = $datetime->getTimestamp();
-
     if($slotTime-$currentTime < 60*60*3){
-        return ' class: cell_disabled ';
+        return 'cell_disabled ';
     }
-    $queryBooked = "SELECT doctor, time FROM appointmentTable
-        WHERE doctor = '$doctor' AND time = '$slotTimeString'";
-    $queryAns = mysqli_query($conn, $queryBooked);
-    if($queryAns->num_rows){
-        return ' class: cell_otherBooked ';
+    //Check if doctor is available this time of the week
+    if(!is_null($doctorId)){
+        if(!checkDoctorWeeklyAvailable($conn, $doctorId, $slotTimeString)){
+            return 'cell_disabled';
+        }
+        if(!checkDoctorDailyAvailable($conn, $doctorId, $slotTimeString)){
+            return 'cell_otherBooked';
+        }
     }
-    return ' class: cell_freeSlot ';
+    return 'cell_freeSlot';
 }
 
-function increaseDateByDays($format, $date, $numOfDays){
-
-    return date( $format, strtotime( "2009-01-31 +1 month" ) ); // PHP:  2009-03-03
-}
 function createAppointmentTable($tableId, $daySlot, $numOfHours, $startTime){
 // add doctor, add date
 
-    $conn = connectDatabase();
-
+    $conn = connect_db();
 
     $numOfAppointmentPerHour = 4;
     if(isset($_SESSION['dateChoose'])){
@@ -54,9 +47,7 @@ function createAppointmentTable($tableId, $daySlot, $numOfHours, $startTime){
     // $time = DateTime::createFromFormat('Y-m-d', $startDate);;
 
     $day = date( "w", $time->getTimestamp());
-    // if($day < 3){
-    //
-    // }
+
     print '<table class="hoverTable" id="'.$tableId.'">';
     print '<tr>';
     print '<th></th>';
@@ -69,32 +60,30 @@ function createAppointmentTable($tableId, $daySlot, $numOfHours, $startTime){
     }
     print '</tr>';
     /**
-    * The idea is that we only have three days slot by start date, and onwards 2 days
-    * Saturday and Sunday are skipped
-    * Bookeable date is today onwards, no exception
-    * That means past date will be cleared in the sql database
+    * Create the table
     */
-    $n = 0;
+    $doctorId = NULL;
+    $userId = NULL;
+    if(isset($_SESSION['doctorId'])) $doctorId = $_SESSION['doctorId'];
+    if(isset($_SESSION['id'])) $userId = $_SESSION['id'];
+
     for ($i = 0; $i < $daySlot; $i++) {
-        if(($day+$n)%7==0) $n+=1;//Sunday Case
-        if(($day+$n)%7==6) $n+=2;//Sunday Case
         print '<tr>';
-        //newdate needs to change
-        $newdate=date('D d/m/y', strtotime("+$n days", $time->getTimestamp()));
+        $newdate=date('D d/m/y', strtotime("+$i days", $time->getTimestamp()));
         print '<td>'.$newdate.'</td>';
         for($j = 0; $j < $numOfHours; $j++){
             $hour = $startTime + $j;
             for($k = 0; $k < $numOfAppointmentPerHour; $k++){
                 $minutes = $k*15;
-                $dateid = date('Y-m-d ', strtotime("+$n days", $time->getTimestamp())) . sprintf("%02d:%02d:00", $hour, $minutes);
-                $class = getSlotPropertiesFromSql($conn, 'Edo', 'Jonisins', $dateid);
+                $dateid = date('Y-m-d ', strtotime("+$i days", $time->getTimestamp()))
+                            . sprintf("%02d:%02d:00", $hour, $minutes);
+                $class = getSlotPropertiesFromSql($conn, $doctorId, $userId, $dateid);
                 print '<td id="'. $dateid.'" class="'.$class.'" data-hour="'.$hour.
                 '" data-minutes="'.$minutes.
                 '"></td>';
             }
         }
         print '</tr>';
-        $n+=1;
     }
     print '</table>';
 }

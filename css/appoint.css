@@ -13,6 +13,7 @@
 
 .cell_disabled       { background-color:grey !important }
 .cell_otherBooked       { background-color:red !important }
+.cell_clickedOtherBooked       { background-color:orange !important }
 .cell_freeSlot        { background-color:#b8d1f3 !important }
 .cell_freeSlot:hover { background-color:#ffff99 !important }
 .cell_clickedFreeSlot { background-color:green !important }
@@ -144,3 +145,13 @@ fieldset
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+/* your colors */
+.legend .superawesome { background-color: #ff00ff; }
+.legend .awesome { background-color: #00ffff; }
+.legend .kindaawesome { background-color: #0000ff; }
+.legend .notawesome { background-color: #000000; }

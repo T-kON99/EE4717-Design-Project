@@ -15,6 +15,7 @@
                 $table_name = str_replace('.sql', '', str_replace($prefix_sql, '', $path));
                 echo 'Populating table: '.$table_name."\n";
                 populate_data($table_name);
+                echo "\n";
             }
         }
     }

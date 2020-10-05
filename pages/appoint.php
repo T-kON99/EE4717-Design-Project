@@ -22,14 +22,25 @@
     <?php include('../components/navbar.php'); ?>
     <div class="root">
         <?php
-            if(isset($_SESSION['LOGIN_AS_DOCTOR'])){
-
+            if(isset($_SESSION['type'])){
+                if($_SESSION['type']=='doctor'){
+                    include('../components/appoint/asDoctor/asDoctorView.php');
+                }else{
+                    include('../components/appoint/asPatient/sessionSaving.php');
+                    include('../components/appoint/asPatient/doctorFilter.php');
+                    echo ('
+                    <script type="module">
+                        import {setupAsPatient} from "../js/appoint/asPatient/appoint.js"
+                        setupAsPatient();
+                    </script>
+                    ');
+                }
             }else{
                 include('../components/appoint/asPatient/sessionSaving.php');
                 include('../components/appoint/asPatient/doctorFilter.php');
                 echo ('
-                <script type="text/javascript" src="../js/appoint.js"> </script>
-                <script>
+                <script type="module">
+                    import {setupAsPatient} from "../js/appoint/asPatient/appoint.js"
                     setupAsPatient();
                 </script>
                 ');
