@@ -1,17 +1,28 @@
 body {
     margin: 0;
+    background-image: url("../images/doctors.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .center {
     margin: 0;
     padding: 0;
-    background-image: url("../images/doctors.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     display: flex;
     justify-content: center;
     height: 100%;
+}
+
+.box {
+    margin: auto;
+    border-radius: .5em;
+    font-size: 1rem;
+    background: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    border: 0px solid #ced4da;
+    width: 25vw;
+    height: auto;
 }
 
 .wrapper {
@@ -19,15 +30,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
-    border-radius: .5em;
-    font-size: 1rem;
-    padding: 2.5%;
-    background: white;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    border: 1px solid #ced4da;
-    width: 20vw;
-    height: auto;
 }
 
 .wrapper h2 {
@@ -38,6 +40,16 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* color: #0062cc; */
     text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .box {
+        width: 80%;
+        align-items: center;
+    }
+    .wrapper {
+        width: 100%;
+    }
 }
 
 a {
@@ -138,4 +150,70 @@ a:hover:after {
 
 .has-error {
     color: red;
+}
+
+.corner {
+    display: block;
+    top: 0px;
+    position: relative;
+    width: 100%;
+    height: 48px;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    border-top-left-radius: 0.5em;
+    pointer-events: none;
+}
+
+.corner::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    left: -16px;
+    background: #6bb6e9;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(2);
+    transform-origin: 50% 50%;
+    transition: -webkit-transform 0.15s ease-out;
+    transition: transform 0.15s ease-out;
+    transition: transform 0.15s ease-out, -webkit-transform 0.15s ease-out;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.corner:hover::before {
+    transform: scale(2.5);
+}
+
+.corner:hover .go-arrow {
+    transform: scale(1.5);
+    transform-origin: 50% 50%;
+}
+
+.go-corner {
+    display: -webkit-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    padding: 8px 8px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background-color: #6bb6e9;
+    border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+    display: inline-block;
+    padding: 0 6px;
+    color: white;
+    font-family: courier, sans;
+    font-size: 1.6rem;
+    z-index: 1;
 }

@@ -69,37 +69,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../images/favicon.png"/>
     <link rel="stylesheet" href="../css/auth.css">
+    <script type="text/javascript" src="../js/auth.js"></script>
     <title>Login</title>
 </head>
 <body>
     <div class="center">
-        <div class="wrapper">
-            <?php if(!empty($success_msg)) { ?>
-                <span class="status success"><?php echo $success_msg; ?> You'll be redirected to login page soon or click <a href="login.php">here</a></span>
-            <?php } ?>
-            <h2>Signup</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                    <label>Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $email; ?>">
-                    <span id="help-email" class="help-block"><?php echo $email_err; ?></span>
-                </div>    
-                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                    <span id="help-password" class="help-block"><?php echo $password_err; ?></span>
+        <div class="box">
+            <div class="corner" id="back">
+                <div className="go-corner">
+                    <div class="go-arrow">←</div>
                 </div>
-                <div class="form-group <?php echo (!empty($con_password_err)) ? 'has-error' : ''; ?>">
-                    <label>Confirm Password</label>
-                    <input type="password" name="con_password" class="form-control" placeholder="Reenter Password">
-                    <span id="help-password" class="help-block"><?php echo $con_password_err; ?></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Create Account">
-                </div>
-                <p>Already have an account? <a href="login.php">Login now</a>.</p>
-            </form>
-        </div>    
+            </div>
+            <div class="wrapper">
+                <?php if(!empty($success_msg)) { ?>
+                    <span class="status success"><?php echo $success_msg; ?> You'll be redirected to login page soon or click <a href="login.php">here</a></span>
+                <?php } ?>
+                <h2>Signup</h2>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $email; ?>">
+                        <span id="help-email" class="help-block"><?php echo $email_err; ?></span>
+                    </div>    
+                    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <span id="help-password" class="help-block"><?php echo $password_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($con_password_err)) ? 'has-error' : ''; ?>">
+                        <label>Confirm Password</label>
+                        <input type="password" name="con_password" class="form-control" placeholder="Reenter Password">
+                        <span id="help-password" class="help-block"><?php echo $con_password_err; ?></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Create Account">
+                    </div>
+                    <p>Already have an account? <a href="login.php">Login now</a>.</p>
+                </form>
+            </div>    
+        </div>
     </div>
 </body>
 </html>
