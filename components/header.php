@@ -2,7 +2,7 @@
 <?php 
     include_once('theme.php');
     ini_set('session.cookie_httponly', '1');
-    session_start();
+    @session_start();
     use \Main\ThemeData as Theme;
 ?>
 <header>
@@ -21,7 +21,7 @@
                         <div class="action">
                             <a href="../php/logout.php">Log out</a>
                         </div>
-                        <a href="appoint.php" class="button-primary button-md">Make Appointment</a>
+                        <a href="appoint.php" class="button-primary button-md"><?php echo $_SESSION["type"] === "doctor" ? "Check" : "Make" ?> Appointment</a>
                     <?php } ?>
                 </div>
             </div>
@@ -35,6 +35,10 @@
                 <?php if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) { ?>
                     <div class="action">
                         <a href="../php/login.php">Log In</a>
+                    </div>
+                <?php } else { ?>
+                    <div class="action">
+                            <a href="../php/logout.php">Log out</a>
                     </div>
                 <?php } ?>
             </div>
