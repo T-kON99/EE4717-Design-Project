@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="../css/navbar.php">
 <link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/<?php echo $fname . '.css'; ?>">
+<link rel="stylesheet" href="../css/<?php echo $fname . '/' . $fname . '.css'; ?>">
 <script src="../js/main.js"></script>
 <script src="../js/<?php echo $fname . '.js'; ?>"></script>
 <title><?php echo $title;?></title>
