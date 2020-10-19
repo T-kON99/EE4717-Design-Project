@@ -152,6 +152,14 @@ a:hover:after {
     color: red;
 }
 
+.status {
+    text-align: center;
+}
+
+.success {
+    color: green;
+}
+
 .corner {
     display: block;
     top: 0px;
