@@ -82,7 +82,7 @@
             </div>
             <div class="wrapper">
                 <?php if(!empty($success_msg)) { ?>
-                    <span class="status success"><?php echo $success_msg; ?> You'll be redirected to login page soon or click <a href="login.php">here</a></span>
+                    <div class="status success"><?php echo $success_msg; ?> You'll be redirected to login page soon or click <a href="login.php">here</a></div>
                 <?php } ?>
                 <h2>Signup</h2>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
