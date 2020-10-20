@@ -70,30 +70,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../images/favicon.png"/>
     <link rel="stylesheet" href="../css/auth.css">
-    <script src="../js/auth.js"></script>
+    <script type="text/javascript" src="../js/auth.js"></script>
     <title>Login</title>
 </head>
 <body>
     <div class="center">
-        <div class="wrapper">
-            <h2>Login</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                    <label>Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $email; ?>">
-                    <span id="help-email" class="help-block"><?php echo $email_err; ?></span>
-                </div>    
-                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                    <span id="help-password" class="help-block"><?php echo $password_err; ?></span>
+        <div class="box">
+            <div class="corner" id="back">
+                <div className="go-corner">
+                    <div class="go-arrow">←</div>
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login">
-                </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-            </form>
-        </div>    
+            </div>
+            <div class="wrapper">
+                <h2>Login</h2>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $email; ?>">
+                        <span id="help-email" class="help-block"><?php echo $email_err; ?></span>
+                    </div>    
+                    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <span id="help-password" class="help-block"><?php echo $password_err; ?></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Login">
+                    </div>
+                    <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                </form>
+            </div>    
+        </div>
     </div>
 </body>
 </html>

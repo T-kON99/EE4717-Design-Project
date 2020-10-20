@@ -1,5 +1,5 @@
 <h1> Make an Appointment as Patient </h1>
-<div style="display:block; text-align:center">
+<div style="display:block; text-align:center;">
     <?php
     include 'categoryFilter.php';
     ?>
@@ -59,6 +59,12 @@ date_default_timezone_set('Asia/Singapore');
         <?php
         createAppointmentTable('firstShiftTable', $daySlot, $workHour, $startFirstShift);
         ?>
+        <ul class="legend">
+            <li><span class="cell_disabled"></span> Not Available</li>
+            <li><span class="cell_freeSlot"></span> Available</li>
+            <li><span class="cell_bookedSlot"></span> Booked by me</li>
+            <li><span class="cell_otherBooked"></span> Slot already taken</li>
+        </ul>
     </fieldset>
 </div>
 <br>
@@ -68,6 +74,12 @@ date_default_timezone_set('Asia/Singapore');
     <fieldset style="width:1200px; display:inline-block;">
         <legend>Select Timeslot</legend>
         <?php createAppointmentTable('secondShiftTable', $daySlot, $workHour, $startSecondShift);?>
+        <ul class="legend">
+            <li><span class="cell_disabled"></span> Not Available</li>
+            <li><span class="cell_freeSlot"></span> Available</li>
+            <li><span class="cell_bookedSlot"></span> Booked by me</li>
+            <li><span class="cell_otherBooked"></span> Slot already taken</li>
+        </ul>
         <br>
         <br>
         <button id="bookingButton" class="custom-button" style="display:inline-block;">

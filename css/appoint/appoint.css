@@ -105,6 +105,7 @@ fieldset
     border-radius:4px;
     background-color:#f5f5f5;
     padding-left:10px!important;
+    /* z-index: -1; */
 }
 
     legend

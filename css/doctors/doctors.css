@@ -215,3 +215,51 @@ hr.card-separator-xl {
     overflow: hidden;
     transition-timing-function: linear, step-end, step-start;
 }
+
+a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .5);
+}
+
+.btn-secondary, -btn-secondary:focus {
+    color: #ffffff;
+    background-color: #00bcd1;
+    border-color: #00bcd1;
+}
+
+.btn-secondary:hover {
+    color: #ffffff;
+    background-color: #346bae;
+    border-color: #346bae;
+    transition: 250ms all ease-in-out;
+}
+
+.btn {
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn:focus {
+    outline: 0;
+}

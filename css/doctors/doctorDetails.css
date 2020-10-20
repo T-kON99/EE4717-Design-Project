@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+}
+
+
+.bar {
+    background-color: rgb(52, 107, 174);
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+
+}
+
+h1.header {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+h1.header img {
+    margin-right: 5px;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.info-title {
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-align: left;
+}
+
+.info-subtitle {
+    color: #00bcd1 !important;
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-align: left;
+}
+
+.info-subtitle img {
+    max-width: 30px;
+    max-height: auto;
+    margin-left: 10px;
+}
+
+.info-short {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #333333;
+    font-weight: 400;
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.info-long {
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.375;
+    font-weight: 300;
+    color: #9b9b9b;
+}
+
+.info-foot {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1em;
+    color: mediumturquoise;
+}
+
+.btn {
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 200px;
+    border-radius: .25rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn-secondary, -btn-secondary:focus {
+    color: #ffffff;
+    background-color: #00bcd1;
+    border-color: #00bcd1;
+}
+
+.btn-secondary:hover {
+    color: #ffffff;
+    background-color: #6da7ee;
+    border-color: #6da7ee;
+    transition: 250ms all ease-in-out;
+}
+
+.btn-secondary:active {
+    background-color: navy;
+}
+
+.corner {
+    display: block;
+    top: -5px;
+    position: relative;
+    width: 100%;
+    height: 48px;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.corner::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    left: -16px;
+    background: #6bb6e9;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(2);
+    transform-origin: 50% 50%;
+    transition: -webkit-transform 0.15s ease-out;
+    transition: transform 0.15s ease-out;
+    transition: transform 0.15s ease-out, -webkit-transform 0.15s ease-out;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.corner:hover::before {
+    transform: scale(2.5);
+}
+
+.corner:hover .go-arrow {
+    transform: scale(1.5);
+    transform-origin: 50% 50%;
+}
+
+.go-corner {
+    display: -webkit-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    padding: 8px 8px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background-color: #6bb6e9;
+    border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+    display: inline-block;
+    padding: 0 6px;
+    color: white;
+    font-family: courier, sans;
+    font-size: 1.6rem;
+    z-index: 1;
+}
+
+/* Doctor's page with form to update personal particulars */
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-input {
+	display: block;
+	width: 100%;
+	min-height: 54px;
+	padding: 13px 19px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 26px;
+	color: #a3a3a3;
+	background-color: #f4f4f4;
+	background-image: none;
+	border-radius: 6px;
+	border: 1px solid #f4f4f4;
+    margin-bottom: 10px;
+}
+
+textarea.form-input {
+    height: 135px;
+	min-height: 54px;
+	max-height: 230px;
+	resize: vertical;
+}
+
+.help-block {
+    color: red;
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.info-success {
+    color: green;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}

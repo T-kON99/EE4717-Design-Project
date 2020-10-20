@@ -9,7 +9,7 @@ div.root {
 }
 
 .banner {
-    background-image: url("../images/bg-img-3.jpg");
+    background-image: url("../../images/bg-img-3.jpg");
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
