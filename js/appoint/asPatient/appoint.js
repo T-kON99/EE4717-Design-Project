@@ -21,7 +21,7 @@ class AppointmentAsPatient{
         }
 
         if(this.userHaveClickedOnce){
-            var prevCell = document.getElementById(lastTableId).rows[lastClickedRow].cells[lastClickedColumn];
+            var prevCell = document.getElementById(this.lastTableId).rows[this.lastClickedRow].cells[this.lastClickedColumn];
             if(prevCell.classList.contains('cell_clickedFreeSlot')){
                 prevCell.classList.remove('cell_clickedFreeSlot');
                 prevCell.classList.add('cell_freeSlot');

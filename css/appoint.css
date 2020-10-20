@@ -11,21 +11,47 @@
     width: 60px;
 }
 
-.cell_disabled       { background-color:grey !important }
-.cell_otherBooked       { background-color:red !important }
-.cell_clickedOtherBooked       { background-color:orange !important }
-.cell_freeSlot        { background-color:#b8d1f3 !important }
-.cell_freeSlot:hover { background-color:#ffff99 !important }
-.cell_clickedFreeSlot { background-color:green !important }
-.cell_bookedSlot { background-color:yellow !important }
-.cell_clickedBookedSlot { background-color:orange !important }
+.cell_disabled       {
+    transition: 0.3s;
+    background-color:grey !important }
+.cell_otherBooked       {
+        transition: 0.3s;
+        background-color:red !important }
+.cell_clickedOtherBooked       {
+        transition: 0.3s;
+        background-color:orange !important }
+.cell_freeSlot        {
+        transition: 0.3s;
+        background-color:#b8d1f3 !important }
+.cell_freeSlot:hover {
+    cursor:pointer;
+    transition: 0.3s;
+    background-color:#ffff99 !important
+}
+.cell_clickedFreeSlot {
+        transition: 0.3s;
+        background-color:green !important }
+.cell_bookedSlot {
+        transition: 0.3s;
+        background-color:yellow !important }
+.cell_clickedBookedSlot {
+        transition: 0.3s;
+        background-color:orange !important }
 
 
 
 .rowChoice        { background-color:#b8d1f3 }
-.rowChoice:hover { background-color:#ffff99 }
-.rowClicked { background-color:green !important }
-.rowChoosed { background-color:#007bff !important }
+.rowChoice:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color:#ffff99
+}
+.rowClicked {
+    transition: 0.3s;
+    background-color:green !important }
+.rowChoosed {
+    transition: 0.3s;
+    background-color:#007bff !important }
 #doctorChooseTable  {
     margin-top:  20px;
     /* overflow: auto; */
