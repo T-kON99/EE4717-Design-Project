@@ -4,7 +4,7 @@
     require_once('../theme.php');
     use \Main\ThemeData as Theme;
     session_start();
-    if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'] === true) {
+    if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'] === true) || !isset($_SESSION['type']) || !($_SESSION['type'] === 'doctor')) {
         header("location: ../../php/login.php");
         exit;
     }
