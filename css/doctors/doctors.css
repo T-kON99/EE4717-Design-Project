@@ -168,6 +168,11 @@ section.cross-card-container {
     
 }
 
+.card-icon-xl img {
+    width: 200px;
+    height: auto;
+}
+
 .card-col-xl.description {
     flex: 70%;
     text-align: left;
