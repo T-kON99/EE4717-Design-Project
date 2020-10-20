@@ -1,6 +1,35 @@
 footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 10px 0;
+    background: rgb(52, 107, 174);
+    color: #ffffff;
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+footer img {
+    width: 10%;
+    height: auto;
+}
+
+footer small {
+    margin-right: 10px;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: lightskyblue;
+}
+
+.footer-text a:hover {
+    color: lawngreen;
+    transition: 0.3s;
 }
