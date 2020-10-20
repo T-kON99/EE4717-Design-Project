@@ -1,10 +1,10 @@
 name,rating,num_of_patients,user_id,category_id,address,image_link
-Xander,3,5,1,1,Nanyang Ave,../images/xander.png
-Johni Sins,4,2,2,2,Bugis,../images/johni.png
-Abraham Zach,5,3,3,3,Changi,../images/abraham.png
-Luis,2,4,4,4,Tanjong Pagar,../images/luis.png
-Michael,4,8,5,5,Chinatown,../images/michael.png
-Steven Berg,5,3,6,6,Queenstown,../images/steven.png
-Noctis Lupus,5,3,7,7,London,../images/noctis.png
-Luke Worcestershire,4,3,8,8,Newyork,../images/luke.png
-Dimitri Alexünder,5,3,9,9,Fhirdiad,../images/dimitri.png
+Xander,3,5,1,1,Nanyang Ave,../images/doctors/doctor-1.png
+Johni Sins,4,2,2,2,Bugis,../images/doctors/doctor-3.png
+Abraham Zach,5,3,3,3,Changi,../images/doctors/doctor-4.png
+Luis,2,4,4,4,Tanjong Pagar,../images/doctors/doctor-2.png
+Michael,4,8,5,5,Chinatown,../images/doctors/doctor-1.png
+Steven Berg,5,3,6,6,Queenstown,../images/doctors/doctor-3.png
+Noctis Lupus,5,3,7,1,London,../images/doctors/doctor-2.png
+Luke Worcestershire,4,3,8,3,Bukit Timah,../images/doctors/doctor-1.png
+Dimitri Alexünder,5,3,9,5,Orchard Road,../images/doctors/doctor-4.png
