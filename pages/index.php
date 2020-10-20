@@ -50,16 +50,41 @@
                 </div>
             </div>
         </section>
+        <section class="content">
+            <div class="content-wrapper-text">
+                <div class="content-title">
+                    <h2>
+                        Clinic that <span class="text-teal">prioritizes</span> your daily needs
+                    </h2>
+                </div>
+                <div class="content-subtitle">
+                    We provide the a wide range of medical services, so every person could have the opportunity to receive qualitative medical help.
+                </div>
+                <div class="content-list">
+                    <ul class="custom">
+                        <li>Adult and Children's Center</li>
+                        <li>Birthing and Lactation Issues</li>
+                        <li>Ear, Nose and Throat (ENT)</li>
+                        <li>Interventional Cardiology</li>
+                    </ul>
+                    <ul class="custom">
+                        <li>Dental and Oral Surgery</li>
+                        <li>Cardiac Support Groups</li>
+                        <li>Heart and Vascular Institute</li>
+                        <li>Emergency Pediatric Care</li>
+                    </ul>
+                </div>
+                <div class="button-group">
+                    <a class="button-primary button-md" href="about.php">
+                            Read More
+                    </a>
+                </div>
+            </div>
+            <div class="content-wrapper-image">
+                <img src="../images/banner.png" alt="banner">
+            </div>
+        </section>
     </div>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-
     <?php include('../components/footer.php'); ?>
 </body>
 </html>
