@@ -1,5 +1,5 @@
 name,rating,num_of_patients,user_id,category_id,address,image_link
-Xander,3,5,1,1,Nanyang Ave,../images/xander.png,
+Xander,3,5,1,1,Nanyang Ave,../images/xander.png
 Johni Sins,4,2,2,2,Bugis,../images/johni.png
 Abraham Zach,5,3,3,3,Changi,../images/abraham.png
 Luis,2,4,4,4,Tanjong Pagar,../images/luis.png
