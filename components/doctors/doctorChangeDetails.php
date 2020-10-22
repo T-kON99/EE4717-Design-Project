@@ -15,7 +15,7 @@
     if(!$result) {
         die('ERROR: Could not fetch categories'.mysqli_connect_error());
     }
-    $row = $result->fetch_all(MYSQLI_ASSOC)[0];
+    $row = $result->fetch_assoc();
 ?>
 <html lang="en">
 <head>
