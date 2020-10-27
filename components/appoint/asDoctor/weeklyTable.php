@@ -13,7 +13,7 @@ function getSlotWeeklyTable($conn, $doctorId, $slotWeekTime){
     //Check if doctor is available this time of the week
     if(!is_null($doctorId)){
         if(!checkDoctorWeeklyAvailableTimeOnly($conn, $doctorId, $weekdayNum, $timeString)){
-            return 'cell_disabled';
+            return 'cell_disabled_hoverable';
         }
     }
     return 'cell_freeSlot';

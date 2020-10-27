@@ -1,10 +1,10 @@
 <?php
     define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_NAME', 'ee4717');
+    define('DB_USERNAME', 'f36ee');
+    define('DB_PASSWORD', 'f36ee');
+    define('DB_NAME', 'f36ee');
     @ini_set('session.cookie_httponly', '1');
-    
+
     function connect_db($server = DB_SERVER, $username = DB_USERNAME, $password = DB_PASSWORD, $dbname = DB_NAME) {
         $db_connection = mysqli_connect($server, $username, $password, $dbname);
         // Check connection
@@ -38,5 +38,5 @@
         $result = stream_get_contents($fp); // no maxlength/offset
         fclose($fp);
         return $result;
-    }    
+    }
 ?>

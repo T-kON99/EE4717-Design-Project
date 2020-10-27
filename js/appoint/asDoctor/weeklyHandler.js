@@ -29,16 +29,16 @@ class WeeklyTable{
         this.lastTableId = table.id;
         this.lastChoosedSlotTimeString = event.target.id;
         /**
-        * cell_disabled <=> cell_clickedBookedSlot
+        * cell_disabled_hoverable <=> cell_clickedBookedSlot
         * cell_freeSlot <=> cell_clickedFreeSlot
         */
-        if(cell.classList.contains('cell_disabled')){
-            cell.classList.remove('cell_disabled');
+        if(cell.classList.contains('cell_disabled_hoverable')){
+            cell.classList.remove('cell_disabled_hoverable');
             cell.classList.add('cell_clickedBookedSlot');
             this.weekTimeSet.add(cell.id);
         }else if(cell.classList.contains('cell_clickedBookedSlot')){
             cell.classList.remove('cell_clickedBookedSlot');
-            cell.classList.add('cell_disabled');
+            cell.classList.add('cell_disabled_hoverable');
             this.weekTimeSet.delete(cell.id);
         }
         else if(cell.classList.contains('cell_freeSlot')){

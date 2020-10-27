@@ -1,7 +1,10 @@
 <?php set_include_path(__DIR__.'/'); ?>
-<?php 
+<?php
     include_once('theme.php');
     ini_set('session.cookie_httponly', '1');
+    // ini_set('display_errors', '1');
+    // ini_set('display_startup_errors', '1');
+    // error_reporting(E_ALL);
     @session_start();
     use \Main\ThemeData as Theme;
 ?>

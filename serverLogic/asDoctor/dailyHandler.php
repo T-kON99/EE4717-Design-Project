@@ -13,24 +13,19 @@
         return true;
     }
 
-    function handleCancelAppointment($userId, $slotTimeString){
-        //TODO Add sent email to notify patient that is cancelled
-        echo 'Notify Patient... TODO Add sent email to notify patient that is cancelled';
-    }
-
 
 
     session_start();
     $doctorId = isset($_SESSION['doctorId']) ? $_SESSION['doctorId'] : NULL;
-    $userId = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
+    $doctorAccountId = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
     $type = isset($_SESSION['type']) ? $_SESSION['type'] : NULL;
 
     $slotTimeString = isset($_POST['slotTimeString']) ? $_POST['slotTimeString'] : NULL;
 
-    if(!verifyAsDoctor($doctorId, $userId, $type)){
+    if(!verifyAsDoctor($doctorId, $doctorAccountId, $type)){
         print($type);
         print($doctorId);
-        print($userId);
+        print($doctorAccountId);
         echo 'Please Log In As Doctor...';
         exit();
     };
@@ -40,17 +35,18 @@
         echo 'Time is not on Slot!';
         errorPostHandling();
     }
-
-    if(checkDoctorBookedByUser($conn, $doctorId, $userId, $slotTimeString)){
-        deleteAppointment($conn, $doctorId, $userId, $slotTimeString);
+    if(checkDoctorBookedByUser($conn, $doctorId, $doctorAccountId, $slotTimeString)){
+        deleteAppointment($conn, $doctorId, $doctorAccountId, $slotTimeString);
         echo 'Delete Doctor Own Blocked Time Slot';
         exit();
     }else{
         $queryAns = queryAppointments($conn, $doctorId, $slotTimeString);
+        $users_id = 0;
+        $queryAns->bind_result($users_id);
         if($queryAns->num_rows > 0){
-            while($row = mysqli_fetch_assoc($queryAns)){
-                deleteAppointment($conn, $doctorId, $row['users_id'], $slotTimeString);
-                handleCancelAppointment($row['users_id'], $slotTimeString);
+            while($queryAns->fetch()){
+                deleteAppointment($conn, $doctorId, $users_id, $slotTimeString);
+                handleCancelAppointmentByDoctor($conn, $users_id, $slotTimeString, $doctorId);
                 echo 'Delete Appointment '.$slotTimeString;
             }
             exit();
@@ -60,7 +56,7 @@
             echo 'You are not available on this timeslot per week!';
             exit();
         }
-        insertAppointment($conn, $doctorId, $userId, $slotTimeString);
+        insertAppointment($conn, $doctorId, $doctorAccountId, $slotTimeString);
         echo 'Block Slot '.$slotTimeString;
     }
 ?>

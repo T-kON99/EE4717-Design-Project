@@ -1,5 +1,5 @@
-<h1> Make an Appointment as Patient </h1>
 <div style="display:block; text-align:center;">
+  <h1> Make an Appointment </h1>
     <?php
     include 'categoryFilter.php';
     ?>

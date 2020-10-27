@@ -1,18 +1,4 @@
 <?php
-function connectDatabase(){
-    $servername = "localhost";
-    $username = "database_user";
-    $password = "user_password";
-    $database_name = "database_name";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database_name);
-    if (!$conn) {
-        echo 'Connection failed: ' . $conn->connect_error;
-    }else{
-        return $conn;
-    }
-}
 // 1. time is on the slot,
 // 2. Doctor is available, means doctor is not booked by himself or other people
 // 3. Doctor weekly is available
@@ -49,8 +35,8 @@ function checkDoctorBookedByUser($conn, $doctorId, $userId, $slotTimeString){
 
     $prepareBooked->execute();
 
-    $queryAns = $prepareBooked->get_result();
-    if($queryAns->num_rows){
+    $prepareBooked->store_result();
+    if($prepareBooked->num_rows){
         $prepareBooked->close();
         return true;
     }else{
@@ -71,8 +57,8 @@ function checkDoctorDailyAvailable($conn, $doctorId, $slotTimeString){
     $prepareBooked->bind_param("is", $doctorId, $slotTimeString);
     $prepareBooked->execute();
 
-    $queryAns = $prepareBooked->get_result();
-    if($queryAns->num_rows){
+    $prepareBooked->store_result();
+    if($prepareBooked->num_rows){
         $prepareBooked->close();
         return false;
     }
@@ -101,8 +87,8 @@ function checkDoctorWeeklyAvailable($conn, $doctorId, $slotTimeString){
     $prepareAvail->bind_param("iis", $doctorId, $weekday, $time);
     $prepareAvail->execute();
 
-    $queryAns = $prepareAvail->get_result();
-    if($queryAns->num_rows){
+    $prepareAvail->store_result();
+    if($prepareAvail->num_rows){
         $prepareAvail->close();
         return true;
     }
@@ -157,56 +143,53 @@ function queryFilterDoctor($conn, $category_id, $orderBy){
     $prepareDoctorTable = $conn->prepare($queryDoctor);
 
     if(!is_null($category_id)){
+        echo 'category_id'.$category_id;
         if($category_id!=-1){
             $prepareDoctorTable->bind_param("i", $category_id);
             $prepareDoctorTable->execute();
         }else $prepareDoctorTable->execute();
     }else{
-        $prepareDoctorTable->execute();
+      $prepareDoctorTable->execute();
     }
+    $prepareDoctorTable->store_result();
 
-    $queryAns = $prepareDoctorTable->get_result();
-    $prepareDoctorTable->close();
-
-    return $queryAns;
+    return $prepareDoctorTable;
 }
 
 function getDoctorNameFromId($conn, $doctorId){
     if(is_null($doctorId))
         return NULL;
-
-    $queryDoctor = "SELECT * FROM doctors WHERE id = ?";
+    $queryDoctor = "SELECT name FROM doctors WHERE id = ?";
 
     $prepareDoctorTable = $conn->prepare($queryDoctor);
 
     $prepareDoctorTable->bind_param("i", $doctorId);
     $prepareDoctorTable->execute();
 
-    $queryAns = $prepareDoctorTable->get_result();
-    $prepareDoctorTable->close();
+    $prepareDoctorTable->store_result();
 
-    if($queryAns->num_rows){
-        $row = mysqli_fetch_assoc($queryAns);
-        return $row["name"];
+    if($prepareDoctorTable->num_rows>0){
+        $name = "";
+        $prepareDoctorTable->bind_result($name);
+        $prepareDoctorTable->fetch();
+        $prepareDoctorTable->close();
+        return $name;
     }
     return NULL;
 }
 
 function queryCategories($conn){
-    $queryCategories = "SELECT * FROM categories";
+    $queryCategory = "SELECT id, name FROM categories";
 
-    $prepareCategories = $conn->prepare($queryCategories);
-
+    $prepareCategories = $conn->prepare($queryCategory);
     $prepareCategories->execute();
 
-    $queryAns = $prepareCategories->get_result();
-    $prepareCategories->close();
-
-    return $queryAns;
+    $prepareCategories->store_result();
+    return $prepareCategories;
 }
 
 function queryAppointments($conn, $doctorId, $slotTimeString){
-    $queryAppointments = "SELECT doctors_id, users_id, timeslot FROM appointments
+    $queryAppointments = "SELECT users_id FROM appointments
         WHERE doctors_id = ? AND timeslot = ?";
 
     $prepareAppointments = $conn->prepare($queryAppointments);
@@ -214,10 +197,10 @@ function queryAppointments($conn, $doctorId, $slotTimeString){
 
     $prepareAppointments->execute();
 
-    $queryAns = $prepareAppointments->get_result();
-    $prepareAppointments->close();
+    $prepareAppointments->store_result();
 
-    return $queryAns;
+
+    return $prepareAppointments;
 }
 
 function getDoctorIdFromUserId($conn, $userId){
@@ -231,13 +214,105 @@ function getDoctorIdFromUserId($conn, $userId){
     $prepareDoctorTable->bind_param("i", $userId);
     $prepareDoctorTable->execute();
 
-    $queryAns = $prepareDoctorTable->get_result();
-    $prepareDoctorTable->close();
+    $prepareDoctorTable->store_result();
 
-    if($queryAns->num_rows){
-        $row = mysqli_fetch_assoc($queryAns);
-        return $row["id"];
+    if($prepareDoctorTable->num_rows){
+        $id = 0;
+        $prepareDoctorTable->bind_result($id);
+        $prepareDoctorTable->fetch();
+        return $id;
     }
     return NULL;
+}
+
+function getUserEmailFromId($conn, $userId){
+    if(is_null($userId))
+        return NULL;
+
+    $query = "SELECT email FROM users WHERE id = ?";
+
+    $prepareTable = $conn->prepare($query);
+
+    $prepareTable->bind_param("i", $userId);
+    $prepareTable->execute();
+
+    $prepareTable->store_result();
+
+    if($prepareTable->num_rows){
+        $email = "";
+        $prepareTable->bind_result($email);
+        $prepareTable->fetch();
+        $prepareTable->close();
+        return $email;
+    }
+    return NULL;
+}
+
+function getDoctorEmailFromDoctorId($conn, $doctorId){
+  if(is_null($doctorId))
+      return NULL;
+  $queryDoctor =
+  "SELECT users.email AS email
+   FROM doctors INNER JOIN users ON doctors.user_id=users.id
+   WHERE doctors.id = ?";
+
+  $prepareDoctorTable = $conn->prepare($queryDoctor);
+
+  $prepareDoctorTable->bind_param("i", $doctorId);
+  $prepareDoctorTable->execute();
+
+  $prepareDoctorTable->store_result();
+
+  if($prepareDoctorTable->num_rows>0){
+      $email = "";
+      $prepareDoctorTable->bind_result($email);
+      $prepareDoctorTable->fetch();
+      $prepareDoctorTable->close();
+      return $email;
+  }
+  return NULL;
+}
+
+function handleCancelAppointmentByDoctor($conn, $userId, $slotTimeString, $doctorId){
+    $email = getUserEmailFromId($conn, $userId);
+    $doctorEmail = getDoctorEmailFromDoctorId($conn, $doctorId);
+    $doctorName = getDoctorNameFromId($conn, $doctorId);
+
+    $msg = "Greetings user, your appointment with Dr. ".$doctorName." on ".$slotTimeString." is cancelled by Dr. ".$doctorName;
+    $msg = wordwrap($msg,70);
+    mail($email,"Appointment Cancellation by Doctor",$msg);
+
+    $msg = "Hi Dr. ".$doctorName.", you have cancelled your appointment on ".$slotTimeString;
+    $msg = wordwrap($msg,70);
+    mail($doctorEmail,"Appointment Cancellation by Doctor",$msg);
+}
+
+function handleBookAppointment($conn, $userId, $slotTimeString, $doctorId){
+    $email = getUserEmailFromId($conn, $userId);
+    $doctorEmail = getDoctorEmailFromDoctorId($conn, $doctorId);
+    $doctorName = getDoctorNameFromId($conn, $doctorId);
+
+    // send email to user
+    $msg = "Greetings user, you have booked an appointment with Dr. ".$doctorName." on ".$slotTimeString;
+    $msg = wordwrap($msg,70);
+    mail($email,"Appointment Booking",$msg);
+
+    $msg = "Hi Dr. ".$doctorName.", there is a new appointment on ".$slotTimeString;
+    $msg = wordwrap($msg,70);
+    mail($doctorEmail,"Appointment Booked by Patient",$msg);
+}
+
+function handleCancelAppointment($conn, $userId, $slotTimeString, $doctorId){
+    $email = getUserEmailFromId($conn, $userId);
+    $doctorEmail = getDoctorEmailFromDoctorId($conn, $doctorId);
+    $doctorName = getDoctorNameFromId($conn, $doctorId);
+
+    $msg = "Greetings user, you have cancelled the appointment with Dr. ".$doctorName." on ".$slotTimeString;
+    $msg = wordwrap($msg,70);
+    mail($userEmail,"Appointment Cancellation",$msg);
+
+    $msg = "Hi Dr. ".$doctorName.", your appointment on ".$slotTimeString." is cancelled";
+    $msg = wordwrap($msg,70);
+    mail($doctorEmail,"Appointment Cancellation by Patient",$msg);
 }
 ?>

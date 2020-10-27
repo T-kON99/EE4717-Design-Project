@@ -13,7 +13,7 @@
                 {
                     include_once dirname(__FILE__) . '/../../../serverLogic/sqlHandler.php';
                     include_once realpath(dirname(__FILE__) . '/../../../php/config.php');
-
+                    echo 'testingtesting';
                     $conn = connect_db();
                     $queryAns = queryCategories($conn);
 
@@ -23,8 +23,11 @@
                     }
 
                     createOption(-1, $categoryIdChoosed, 'All');
-                    while($row = mysqli_fetch_assoc($queryAns)) {
-                        createOption($row['id'], $categoryIdChoosed, $row['name']);
+                    $id = 0;
+                    $name = "";
+                    $queryAns->bind_result($id, $name);
+                    while($queryAns->fetch()) {
+                        createOption($id, $categoryIdChoosed, $name);
                     }
                 }
             ?>
