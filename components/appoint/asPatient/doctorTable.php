@@ -4,7 +4,7 @@ if(!function_exists('createTableBody')){
     function createTableBody(){
         include_once realpath(dirname(__FILE__) . '/../../../serverLogic/sqlHandler.php');
         include_once realpath(dirname(__FILE__) . '/../../../php/config.php');
-        echo 'testhappy3';
+
 
         $conn = connect_db();
         $orderBy = NULL;
@@ -17,7 +17,7 @@ if(!function_exists('createTableBody')){
             $orderBy = $_SESSION['orderBy'];
         if(isset($_SESSION['doctorId']))
             $doctorId = $_SESSION['doctorId'];
-        echo 'testhappy4';
+        
         $queryAns = queryFilterDoctor($conn, $category_id, $orderBy);
         $rowCounter = 0;
 

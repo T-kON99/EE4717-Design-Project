@@ -13,7 +13,7 @@
                 {
                     include_once dirname(__FILE__) . '/../../../serverLogic/sqlHandler.php';
                     include_once realpath(dirname(__FILE__) . '/../../../php/config.php');
-                    echo 'testingtesting';
+                    
                     $conn = connect_db();
                     $queryAns = queryCategories($conn);
 
