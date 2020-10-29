@@ -273,6 +273,7 @@ function getDoctorEmailFromDoctorId($conn, $doctorId){
   return NULL;
 }
 
+define("EMAIL_TO_SEND", "f36ee@EE-IM-4717");
 function handleCancelAppointmentByDoctor($conn, $userId, $slotTimeString, $doctorId){
     $email = getUserEmailFromId($conn, $userId);
     $doctorEmail = getDoctorEmailFromDoctorId($conn, $doctorId);
@@ -280,11 +281,11 @@ function handleCancelAppointmentByDoctor($conn, $userId, $slotTimeString, $docto
 
     $msg = "Greetings user, your appointment with Dr. ".$doctorName." on ".$slotTimeString." is cancelled by Dr. ".$doctorName;
     $msg = wordwrap($msg,70);
-    mail($email,"Appointment Cancellation by Doctor",$msg);
+    mail(EMAIL_TO_SEND,"Doctor Notification:Appointment Cancelled by Doctor",$msg);
 
     $msg = "Hi Dr. ".$doctorName.", you have cancelled your appointment on ".$slotTimeString;
     $msg = wordwrap($msg,70);
-    mail($doctorEmail,"Appointment Cancellation by Doctor",$msg);
+    mail(EMAIL_TO_SEND,"Patient Notification:Appointment Cancelled by Doctor",$msg);
 }
 
 function handleBookAppointment($conn, $userId, $slotTimeString, $doctorId){
@@ -295,11 +296,11 @@ function handleBookAppointment($conn, $userId, $slotTimeString, $doctorId){
     // send email to user
     $msg = "Greetings user, you have booked an appointment with Dr. ".$doctorName." on ".$slotTimeString;
     $msg = wordwrap($msg,70);
-    mail($email,"Appointment Booking",$msg);
+    mail(EMAIL_TO_SEND,"Patient Notification:Appointment Booked by Patient",$msg);
 
     $msg = "Hi Dr. ".$doctorName.", there is a new appointment on ".$slotTimeString;
     $msg = wordwrap($msg,70);
-    mail($doctorEmail,"Appointment Booked by Patient",$msg);
+    mail(EMAIL_TO_SEND,"Doctor Notification:Appointment Booked by Patient",$msg);
 }
 
 function handleCancelAppointment($conn, $userId, $slotTimeString, $doctorId){
@@ -309,10 +310,10 @@ function handleCancelAppointment($conn, $userId, $slotTimeString, $doctorId){
 
     $msg = "Greetings user, you have cancelled the appointment with Dr. ".$doctorName." on ".$slotTimeString;
     $msg = wordwrap($msg,70);
-    mail($userEmail,"Appointment Cancellation",$msg);
+    mail(EMAIL_TO_SEND,"Patient Notification:Appointment Cancelled by Patient",$msg);
 
-    $msg = "Hi Dr. ".$doctorName.", your appointment on ".$slotTimeString." is cancelled";
+    $msg = "Hi Dr. ".$doctorName.", your appointment on ".$slotTimeString." is cancelled by your patient";
     $msg = wordwrap($msg,70);
-    mail($doctorEmail,"Appointment Cancellation by Patient",$msg);
+    mail(EMAIL_TO_SEND,"Doctor Notification:Appointment Cancelled by Patient",$msg);
 }
 ?>

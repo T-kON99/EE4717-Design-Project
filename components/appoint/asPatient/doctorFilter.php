@@ -33,7 +33,7 @@
 
 <?php
 include_once('appointmentTable.php');
-$daySlot = 3;
+$daySlot = 7;
 $workHour = 5;
 $startFirstShift = 9;
 $startSecondShift = 15;
