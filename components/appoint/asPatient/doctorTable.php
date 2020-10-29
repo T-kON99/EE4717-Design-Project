@@ -17,22 +17,32 @@ if(!function_exists('createTableBody')){
             $orderBy = $_SESSION['orderBy'];
         if(isset($_SESSION['doctorId']))
             $doctorId = $_SESSION['doctorId'];
-
+        
         $queryAns = queryFilterDoctor($conn, $category_id, $orderBy);
         $rowCounter = 0;
-        while($row = mysqli_fetch_assoc($queryAns)) {
+
+        $doctor_id = 10;
+        $doctor_name = "";
+        $category_name = "";
+        $address = "";
+        $rating = 10;
+
+        $queryAns->bind_result($doctor_id, $doctor_name, $category_name,
+        $address, $rating);
+
+        while($queryAns->fetch()) {
             echo '<tr class="doctorTr';
             if(!is_null($doctorId)){
-                echo ($doctorId == $row["doctor_id"]) ? ' rowClicked rowChoosed' : '';
+                echo ($doctorId == $doctor_id ? ' rowClicked rowChoosed' : '');
             }
-            echo '" data-doctorid="'.$row['doctor_id'].'"';
+            echo '" data-doctorid="'.$doctor_id.'"';
             echo '>';
             $rowCounter = $rowCounter+1;
             echo '<td>' . $rowCounter.' </td>';
-            echo '<td>' . $row["doctor_name"].' </td>';
-            echo '<td>' . $row["category_name"].' </td>';
-            echo '<td>' . $row["address"].' </td>';
-            echo '<td>' . $row["rating"].' </td>';
+            echo '<td>' . $doctor_name.' </td>';
+            echo '<td>' . $category_name.' </td>';
+            echo '<td>' . $address.' </td>';
+            echo '<td>' . $rating.' </td>';
             echo '</tr>';
         }
         return $rowCounter;

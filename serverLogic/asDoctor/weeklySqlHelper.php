@@ -31,8 +31,8 @@ function checkDoctorWeeklyAvailableTimeOnly($conn, $doctorId, $weekday, $time){
     $prepareAvail->bind_param("iis", $doctorId, $weekday, $time);
     $prepareAvail->execute();
 
-    $queryAns = $prepareAvail->get_result();
-    if($queryAns->num_rows>0){
+    $queryAns = $prepareAvail->store_result();
+    if($prepareAvail->num_rows>0){
         $prepareAvail->close();
         return true;
     }

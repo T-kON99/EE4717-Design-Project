@@ -11,11 +11,9 @@
     }
     if(isset($_GET['dateChoose'])){
         $_SESSION['dateChoose'] = $_GET['dateChoose'];
-        echo $_GET['dateChoose'];
     }
     if(isset($_GET['doctorId'])){
         $_SESSION['doctorId'] = $_GET['doctorId'];
-        echo $_GET['doctorId'];
     }
     if(isset($_GET['orderBy'])){
         $_SESSION['orderBy'] = $_GET['orderBy'];

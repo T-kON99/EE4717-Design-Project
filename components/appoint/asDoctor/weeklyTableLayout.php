@@ -2,7 +2,6 @@
 // include_once '/../asPatient/appointmentTable.php';
 // include_once realpath(dirname(__FILE__) . '/weeklyTable.php');
 include_once 'weeklyTable.php';
-$daySlot = 3;
 $workHour = 5;
 $startFirstShift = 9;
 $startSecondShift = 15;

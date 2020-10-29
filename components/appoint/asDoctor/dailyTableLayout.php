@@ -1,7 +1,7 @@
 <?php
 // include_once '/../asPatient/appointmentTable.php';
 include_once realpath(dirname(__FILE__) . '/../asPatient/appointmentTable.php');
-$daySlot = 3;
+$daySlot = 7;
 $workHour = 5;
 $startFirstShift = 9;
 $startSecondShift = 15;
@@ -56,8 +56,8 @@ date_default_timezone_set('Asia/Singapore');
 </div>
 <script type="module">
     import {setupDailyTableListener, setupDailyTableButton, setupReloadListener} from "../js/appoint/asDoctor/dailyHandler.js"
-    setupDailyTableListener('asDoctorDailyTableOne', 3, 5);
-    setupDailyTableListener('asDoctorDailyTableTwo', 3, 5);
+    setupDailyTableListener('asDoctorDailyTableOne', 7, 5);
+    setupDailyTableListener('asDoctorDailyTableTwo', 7, 5);
     setupDailyTableButton('dailyTableButton');
     setupReloadListener();
 </script>

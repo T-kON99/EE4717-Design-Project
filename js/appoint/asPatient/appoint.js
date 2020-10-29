@@ -79,8 +79,8 @@ function setupReloadListener(){
 }
 
 export function setupAsPatient(){
-    setupAppointmentTableListener('firstShiftTable', 3, 5);
-    setupAppointmentTableListener('secondShiftTable', 3, 5);
+    setupAppointmentTableListener('firstShiftTable', 7, 5);
+    setupAppointmentTableListener('secondShiftTable', 7, 5);
     setupBookingButtonListener();
     setupReloadListener();
 }

@@ -24,6 +24,7 @@
 
     if(checkDoctorBookedByUser($conn, $doctorId, $userId, $slotTimeString)){
         deleteAppointment($conn, $doctorId, $userId, $slotTimeString);
+        handleCancelAppointment($conn, $userId, $slotTimeString, $doctorId);
         echo 'delete appointment!';
     }else{
         if(!checkDoctorWeeklyAvailable($conn, $doctorId, $slotTimeString)){
@@ -35,6 +36,7 @@
             exit();
         }
         insertAppointment($conn, $doctorId, $userId, $slotTimeString);
+        handleBookAppointment($conn, $userId, $slotTimeString, $doctorId);
         echo 'insert appointment!';
     }
 ?>
