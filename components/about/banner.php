@@ -9,7 +9,7 @@
     $result = $db_con->query('SELECT * FROM appointments');
     $n_cases = $result->num_rows;
     $result = $db_con->query('SELECT AVG(rating) AS avg_rating FROM doctors');
-    $rating = ($result->fetch_assoc())["avg_rating"];
+    $rating = $result->fetch_assoc()["avg_rating"];
 ?>
 <section class="info-banner">
     <div class="banner">
