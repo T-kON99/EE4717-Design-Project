@@ -1,4 +1,5 @@
 <?php
+    define('__ROOT_EMAIL__', 'f36ee@EE-IM-4717');
     set_include_path(__DIR__.'/');
     require_once('config.php');
     session_start();
@@ -52,6 +53,11 @@
                     mysqli_stmt_store_result($stmt);
                     if(mysqli_stmt_affected_rows($stmt) === 1) {
                         $success_msg = "Succesfully created account!";
+                        $subject = "Welcome ".$email."!";
+                        $body = "Welcome to the big family!";
+                        $error = "";
+                        $headers = "From: alwayscare@alwayscare.com";
+                        mail(__ROOT_EMAIL__, $subject, $body, $headers);
                         header("refresh:3;url=login.php"); 
                     } else {
                         $email_err = "Account "."'".$email."'"." already exists";
